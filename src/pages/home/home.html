@@ -1,14 +1,51 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-title>To-Do List</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="openTaskPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+ <ion-list>
+
+  <ion-item-sliding #slidingItem *ngFor="let task of tasks">
+
+  	
+    <ion-item (click)="openDetail(task)" >
+    
+      <span *ngIf="task.done; else notDone" item-left>{{task.name}}</span><span item-end *ngIf="task.done;"><ion-icon style="color: green;" name="md-checkmark"></ion-icon></span>
+    
+
+    <ng-template #notDone>
+    	<span>{{task.name}}</span>
+   	</ng-template>
+    </ion-item>
+
+    <ion-item-options side="right">
+
+      <span *ngIf="task.done; else unDoneSlide">
+      <button ion-button color="primary" (click)="unDoneTask(task, slidingItem)">
+        Undone
+      </button>
+      </span>
+      
+      <ng-template #unDoneSlide>
+      <button ion-button color="primary" (click)="doneTask(task, slidingItem)">
+        Done
+      </button>
+      </ng-template>
+
+      <button ion-button color="secondary" (click)="deleteTask(task)">
+        Delete
+      </button>
+    </ion-item-options>
+
+  </ion-item-sliding>
+
+</ion-list>
+
 </ion-content>
