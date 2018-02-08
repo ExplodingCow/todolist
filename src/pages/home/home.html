@@ -17,7 +17,12 @@
   	
     <ion-item (click)="openDetail(task)" >
     
-      <span *ngIf="task.done; else notDone" item-left>{{task.name}}</span><span item-end *ngIf="task.done;"><ion-icon style="color: green;" name="md-checkmark"></ion-icon></span>
+      <span *ngIf="task.done; else notDone" item-left>
+        {{task.name}}
+      </span>
+      <span item-end *ngIf="task.done;">
+        <ion-icon style="color: green;" name="md-checkmark"></ion-icon>
+      </span>
     
 
     <ng-template #notDone>

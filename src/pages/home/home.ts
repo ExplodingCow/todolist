@@ -11,7 +11,7 @@ import { ItemSliding, ToastController } from 'ionic-angular';
 })
 export class HomePage {
 	constructor(public navCtrl: NavController, public todoProv: TodoProvider, public toastCtrl: ToastController) {
-		this.tasks = this.todoProv.getAll();
+		this.todoProv.tasks = this.todoProv.getAll();
 	}
 
 	openDetail(task) {
