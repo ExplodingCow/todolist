@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { TodoProvider } from '../../providers/todo/todo'
 
 /**
@@ -23,7 +23,7 @@ export class AddtaskPage {
 		done: false,
 	}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public todoProv: TodoProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public todoProv: TodoProvider, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -34,8 +34,33 @@ export class AddtaskPage {
   	if (this.newTask.name != "") {
   	this.todoProv.addTask(this.newTask)
   	this.navCtrl.pop();
+  	this.showAddToast('bottom')
+  	}
+
+  	else {
+  		this.showNoTaskToast('top')
   	}
 
   }
 
-}
+  showAddToast(position: string) {
+    let toast = this.toastCtrl.create({
+      message: 'Task added!',
+      duration: 2000,
+      position: position
+    });
+
+    toast.present(toast);
+  }
+
+  showNoTaskToast(position: string) {
+  	  let toast = this.toastCtrl.create({
+      message: "You can't add an empty task! *facepalm*",
+      duration: 2000,
+      position: position
+    });
+
+    toast.present(toast);
+  }
+ }
+

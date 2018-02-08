@@ -23,7 +23,6 @@ export class DetailPage {
 	this.navCtrl.pop();
 	}
 
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
   }

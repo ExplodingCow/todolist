@@ -21,6 +21,18 @@ export class TodoProvider {
 			location: "Nowhere",
 			description: "Sleep",
 			done: false
+		},
+		{
+			name: "Sleep",
+			location: "Nowhere",
+			description: "Sleep",
+			done: false
+		},
+		{
+			name: "Sleep Again",
+			location: "Nowhere",
+			description: "Sleep",
+			done: false
 		}
 	];
 	constructor() {
